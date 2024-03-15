@@ -1,4 +1,7 @@
+#pragma once
+
 #include<vector>
+#include<set>
 #include <iostream>
 #include<Eigen/Dense>
 #include <cmath>
@@ -6,4 +9,4 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
-std::vector<int> clipper(const MatrixXd& A, const std::vector<double>& u0);
+VectorXd clipper(const MatrixXd& A, const VectorXd& u0);

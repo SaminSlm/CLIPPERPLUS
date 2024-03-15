@@ -20,11 +20,13 @@ int maxoliters = 1000;
 double epsilon = 1e-9; 
 VectorXd deltau(n);
 double deltaF;
-int d = 2;
+double d = 2;
 double deltad = 0.5;
 
 VectorXd u(n), Mu(n), gradF(n), gradFop(n), unew(n), mcu(n),gradfopnew(n);
-u = u0 / u0.norm();
+VectorXd mu0(n);
+mu0 = M * u0;
+u = mu0 / mu0.norm();
 Md = M - d * M_C; 
 
 
@@ -80,13 +82,13 @@ while(outerloop && i < maxoliters){
   }
      std::set<double> uniqueElements;
 
-    // Insert elements of the vector into the set (sets automatically store only unique elements)
- // for (int i = 0; i < u.size(); ++i) {
-    //    uniqueElements.insert(u[i]);
- //   }
-  //if (uniqueElements.size() == 2){
-  // outerloop = false;
-  // }
+    //  Insert elements of the vector into the set (sets automatically store only unique elements)
+    for (int i = 0; i < u.size(); ++i) {
+        uniqueElements.insert(u[i]);
+      }
+    if (uniqueElements.size() == 2){
+     outerloop = false;
+      }
     d = d + deltad;
     Md = M - d * M_C; 
 
