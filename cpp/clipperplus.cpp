@@ -78,4 +78,4 @@ if (C_prime.size() >= C.size() ){
 for (auto ci : C){
   std::cout << ci << " ";
 }
-std::cout << endl;}
+std::cout << std::endl;}
